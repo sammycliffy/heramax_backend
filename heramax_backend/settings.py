@@ -25,7 +25,7 @@ SECRET_KEY = 'sp7*yyt=9uyy$wvn2uk*sebn0ymo84@wldq5#*+t157-+papy6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://heramax.herokuapp.com']
+ALLOWED_HOSTS = ['heramax.herokuapp.com']
 
 
 # Application definition
