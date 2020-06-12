@@ -6,6 +6,7 @@ from app import views
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-     url(r'^$',views.index, name="home"),
-    url(r'^index/$', views.index, name='index')
+    url(r'^$',views.index, name="home"),
+    url(r'^index/$', views.index, name='index'),
+    url(r'^signup/$', views.signup, name='signup')
 ]
