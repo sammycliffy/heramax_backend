@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from app import views
 from django.contrib.auth import views as auth_views
+from app.forms import *
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
@@ -12,4 +13,7 @@ urlpatterns = [
     url(r'^signup/$', views.SignUp_View.as_view(), name="signup"),
     url(r'^information/$', views.information, name='information'),
     url(r'^predashboard/$', views.predashaboard, name='predashboard'),
+    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='app/login.html',
+                                                  authentication_form=LoginForm), name='login'),
 ]

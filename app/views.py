@@ -51,3 +51,7 @@ def information(request):
 
 def predashaboard(request):
     return render(request, 'app/predashboard.html')
+
+
+def profile(request):
+    return render(request, 'app/profile.html')

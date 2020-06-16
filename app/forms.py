@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
 from string import ascii_letters
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class SignUpForm(UserCreationForm):
@@ -42,3 +43,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ("phone", "account_number", "account_name", "bank")
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label=("Username or Email"), max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'loginput'}))
