@@ -58,6 +58,9 @@
         width: 300;
         height: 300;
       }
+      .btn-success {
+        background-color: #6c63ff;
+      }
     </style>
   </head>
   <body>
@@ -81,12 +84,23 @@
             </center>
             <p>
               Thank you for joining Heramax. Please note that a onetime
-              activation fee is required from you. This is a measure taken to
-              make sure participants are ready to participate in this program
-              and will not default when matched to a user(s). Click on the
-              button below to activate your account
+              activation fee of <b>₦1,000</b> or <b>฿ 0.0005</b> is required
+              from you. This is a measure taken to make sure participants are
+              ready to participate in this program and will not default when
+              matched to a user(s). Click on the activation button of your
+              choice below to activate your account. Note you will be matched
+              instantly by the system to make payment
             </p>
-            <a href="{% url 'predashboard' %}" class="">Activate account</a>
+            <a
+              href="{% url 'predashboard' %}"
+              class="btn btn-link"
+              style="float: inline-start;"
+            >
+              <span>&#8358;</span> Pay in Naira</a
+            >
+            <a href="" class="btn btn-link" style="float: right;">
+              <span>&#8383;</span> Pay in Bitcoin</a
+            >
           </div>
         </div>
         <div class="col-lg-2"></div>

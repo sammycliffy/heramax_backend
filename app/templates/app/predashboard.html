@@ -1,58 +1,103 @@
 {% extends 'app/base1.html' %}{% load static %}{% block content %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-
-    <title>Pre Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      .btn-success {
-        width: 150px;
-        height: 70px;
+      .count {
+        text-align: center;
+        font-size: 60px;
+        margin-top: 0px;
       }
-      .btn-primary {
-        width: 150px;
-        height: 70px;
-      }
-      span {
-        font-size: 40px;
+      .heading {
+        background-color: #6c63ff;
+        color: white;
+        width: 100%;
+        font-size: 25px;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-weight: bold;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
       }
     </style>
   </head>
   <body>
-    <br />
+    <p class="count" id="demo"></p>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
-          <h3>Welcome {{request.user.username}}</h3>
-
-          <p>Pay your one time activation key</p>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <div class="heading">
+            <span style="padding-left: 50;">
+              You have been assigned to pay</span
+            >
+          </div>
+          <table class="table table-hover table-bordered table-condensed">
+            <td>Account Name</td>
+            <td>{{request.user.profile.bank}}</td>
+            <tr>
+              <td>Account Number</td>
+              <td>{{request.user.profile.account_number}}</td>
+            </tr>
+            <tr>
+              <td>Bank</td>
+              <td>{{request.user.profile.bank}}</td>
+            </tr>
+            <tr>
+              <td>Amount</td>
+              <td>N1000</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td class="text-danger">Unpaid</td>
+            </tr>
+          </table>
+          <form action="">
+            <input type="file" placeholder="Upload evidence of payment">
+            <input type="submit" value="Upload Evidence" class="btn btn-success">
+          </form>
+          <a href=""></a>
         </div>
-
-        <div class="col-lg-4">
-          <center>
-            <a href="" class="btn btn-success"><span>&#8358;</span></a
-            ><br /><br />
-            <p>Pay in Naira</p>
-          </center>
-        </div>
-        <div class="col-lg-4">
-          <center>
-            <a href="" class="btn btn-primary"
-              ><span class="money">&#8383;</span></a
-            ><br /><br />
-            <p>Pay in Naira</p>
-          </center>
+        <div class="col-lg-2">
         </div>
       </div>
     </div>
     <br /><br /><br />
   </body>
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
 </html>
+
 {% endblock %}
