@@ -47,3 +47,7 @@ class SignUp_View(View):
 
 def information(request):
     return render(request, 'app/information.html')
+
+
+def predashaboard(request):
+    return render(request, 'app/predashboard.html')

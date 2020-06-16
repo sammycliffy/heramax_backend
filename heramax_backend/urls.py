@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^index/$', views.index, name='index'),
     url(r'^signup/$', views.SignUp_View.as_view(), name="signup"),
     url(r'^information/$', views.information, name='information'),
+    url(r'^predashboard/$', views.predashaboard, name='predashboard'),
 ]
