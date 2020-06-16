@@ -36,7 +36,9 @@ class ProfileForm(forms.ModelForm):
         attrs={'class': 'form-control'}))
     bank = forms.CharField(max_length=254, widget=forms.TextInput(
         attrs={'class': 'form-control'}))
+    account_name = forms.CharField(max_length=254, widget=forms.TextInput(
+        attrs={'class': 'form-control'}))
 
     class Meta:
         model = Profile
-        fields = ("phone", "account_number", "bank")
+        fields = ("phone", "account_number", "account_name", "bank")

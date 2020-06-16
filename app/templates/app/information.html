@@ -1,4 +1,4 @@
-{% extends 'app/base.html' %}{% load static %}{% block content %}
+{% extends 'app/base1.html' %}{% load static %}{% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,9 +12,6 @@
 
     <title>Document</title>
     <style>
-      body {
-        background-color: #4a5265;
-      }
       label {
         color: #757b89;
       }
@@ -31,7 +28,7 @@
       }
 
       .heading {
-        background-color: #757b89;
+        background-color: #6c63ff;
         color: white;
         width: 100%;
         font-size: 25px;
@@ -57,45 +54,41 @@
         border-radius: 5px;
         color: dimgrey;
       }
+      .img-fluid {
+        width: 300;
+        height: 300;
+      }
     </style>
   </head>
   <body>
     <br />
     <div class="container">
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
           <div class="heading">
-            <span style="padding-left: 50;"> Registration</span>
+            <span style="padding-left: 50;"> Congratulations</span>
           </div>
           <div class="center-div">
-            <form method="post" action="{% url 'signup' %}">
-              {% csrf_token %}
-              <input
-                type="hidden"
-                value="{{request.get_full_path}}"
-                name="referrer"
+            <center>
+              <img
+                src="{% static 'app/assets/img/congrat.png'%}"
+                class="img-fluid"
+                alt=""
+                width="300"
+                height="300"
               />
-              {{form.as_p}} {{pform.as_p}}
-              <center>
-                <span>By signing up you agree to our terms and conditions</span>
-              </center>
-              <center>
-                <button type="submit" class="btn btn-info btn-lg">
-                  Sign up</button
-                ><br />
-              </center>
-            </form>
+            </center>
+            <p>
+              A onetime activation fee is required from you. This is a measure
+              taken to make sure participants are ready to participate in this
+              program and will not default when matched to a user(s). Click on
+              the button below to activate your account
+            </p>
+            <a href="" class="">Proceed to Dashboard</a>
           </div>
         </div>
         <div class="col-lg-2"></div>
-        <div class="col-lg-4">
-          <br /><br /><br />
-          <img
-            src="{% static 'app/assets/img/welcome.png'%}"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
       </div>
     </div>
     <br /><br /><br />

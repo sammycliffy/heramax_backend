@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.models import User
 from .models import Profile
+from django.contrib.auth import login
 from .forms import *
 from django.http import JsonResponse
 
@@ -40,9 +41,9 @@ class SignUp_View(View):
             raw_password = form.cleaned_data.get('password1')
             login(request, user)
 
-            return redirect('profile')
+            return redirect('information')
         return render(request, self.template_name, {'form': form, 'pform': pform})
 
 
-def LoginView(request):
-    return render(request, 'app/login.html')
+def information(request):
+    return render(request, 'app/information.html')
