@@ -26,8 +26,8 @@ SECRET_KEY = 'sp7*yyt=9uyy$wvn2uk*sebn0ymo84@wldq5#*+t157-+papy6'
 DEBUG = True
 
 ALLOWED_HOSTS = ['heramax.herokuapp.com',
-'localhost'
-]
+                 'localhost'
+                 ]
 
 
 # Application definition
@@ -119,6 +119,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'profile'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
