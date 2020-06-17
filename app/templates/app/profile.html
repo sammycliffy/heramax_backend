@@ -76,7 +76,9 @@
 					   Do you want to proceed with this? </h3>
 
 					  <center>
-						<a href="" class="btn btn-success">Proceed</a>
+						<form action="" id="submit_form">
+							<input type="submit" name="" id="" value="Proceed" class="btn btn-success">
+						</form>
 					  </center>
 				</div>
 			  </div>
@@ -158,7 +160,7 @@
 										<p>
 											<b>Amount to Receive:</b> 0.00
 										</p>
-										<form action="" id="nairaform">
+										<form action="" id="registration_form">
 											<input type="text" class="form-control" id="amount"><br>
 										   <center>
 											   <input type="submit" class="btn btn-success" value="I want to invest">
@@ -175,7 +177,6 @@
 										<a class="btn btn-primary" data-toggle="collapse" href="#bitcoin" role="button" aria-expanded="false" aria-controls="collapseExample">
 										  Invest in Bitcoin
 										</a>
-										<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 									  </p>
 									  <div class="collapse" id="bitcoin">
 										<div class="card card-body">
@@ -209,13 +210,24 @@
 						</div>
 					</div>
 
-
+<script>
+	$(document).on('submit', '#registration_form', function(e){
+							e.preventDefault();
+							$('#registration').modal('show');
+							var amount = document.getElementById("amount").value;
+							var interest = amount/2;
+							var total =  parseInt(amount) + parseInt(interest)
+							$(".amount").text(amount);
+							$(".interest").text(interest);
+							$(".total").text(total);
+							
+});
+</script>
 		
 
 					<script>
-						$(document).on('submit', '#nairaform', function(e){
+						$(document).on('submit', '#submit_form', function(e){
 							e.preventDefault();
-							$('#registration').modal('show');
 							var amount = document.getElementById("amount").value;
 							var interest = amount/2;
 							var total =  parseInt(amount) + parseInt(interest)
