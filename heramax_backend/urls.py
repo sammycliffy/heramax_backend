@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^signup/$', views.SignUp_View.as_view(), name="signup"),
     url(r'^information/$', views.information, name='information'),
     url(r'^predashboard/$', views.predashaboard, name='predashboard'),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/$', views.ProfileView.as_view(), name="profile"),
+    url(r'^plan/$', views.plan, name="plan"),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='app/login.html',
                                                   authentication_form=LoginForm), name='login'),
 ]

@@ -11,3 +11,21 @@ class Profile (models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Plan (models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    amount = models.PositiveIntegerField(default=0)
+    interest = models.PositiveIntegerField(default=0)
+    total = models.PositiveIntegerField(default=0)
+    start_date = models.DateTimeField(auto_now=True)
+    end_date = models.DateTimeField(auto_now=False)
+    duration = models.CharField(max_length=255, null=True)
+    is_approved = models.BooleanField(default=False)
+    is_new = models.BooleanField(default=True)
+    is_assigned = models.BooleanField(default=False)
+
+
+class Receiver (models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    has_received = models.BooleanField(default=False)

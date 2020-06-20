@@ -108,99 +108,46 @@
 						<div class="panel-heading">
 							<center>
 								<h2>
-									WIN BIG ON HERAMAX PROMO
+									You have been matched to pay
 								
-								</h2>
-								<P style="font-size: 18px;">   Stand a chance to win Big in our social media promo challenge.
-									N200,000 for 15 lucky winners
-									 Promo runs every 2 months</P>
-									 <a href="" class="btn btn-success btn-lg"> Learn more</a>
+                                </h2>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-8">
+                                    <table class="table table-hover table-bordered table-condensed">
+                                        <td>Account Name</td>
+                                        <td>{{request.user.profile.bank}}</td>
+                                        <tr>
+                                          <td>Account Number</td>
+                                          <td>{{request.user.profile.account_number}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Bank</td>
+                                          <td>{{request.user.profile.bank}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Amount</td>
+                                          <td>N1000</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Phone</td>
+                                          <td>{{request.user.profile.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Status</td>
+                                          <td class="text-danger">Unpaid</td>
+                                        </tr>
+                                      </table>
+                                </div>
 							</center><br><br>
-							<h2>Welcome {{request.user.profile.account_name}}</h2>
-							<p>
-								This system allows you to have two Investments at a time. Your second Pledge serves as recommitment for the predecessor. You should always also increase your pledge amount after every five investments to avoid delays in withdrawal. Click here for more details.
-							</p>
-							<p style="color:red">
-								<b>NOTE:</b> You are not allowed to make payment to any other account details beside the one given to you by the system on your dashboard.
-							</p>
+						
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								</div>
 								
-								<div class="col-md-5">
-									<p>
-										<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-										  Invest in Naira
-										</a>
-										
-									  </p>
-									  <div class="collapse" id="collapseExample">
-										<div class="card card-body">
-											<h3>MAKE A PLEDGE IN NAIRA</h3>
-											<p><b>Maximum amount: </b>
-												
-												₦1,000,000.00</p>
-											<p><b>
-												Minimum amount:
-											</b>
-											 ₦10,000.00
-												
-												</p>
-										 
-										 <p>
-											 <b>Duration:</b> 7 days 	
-										 </p>
-										 <p>
-											<b>Interest Rate:</b> 50% 
-										</p>
-										<p>
-											<b>Amount to Receive:</b> 0.00
-										</p>
-										<form action="" id="registration_form">
-											<input type="text" class="form-control" id="amount"><br>
-										   <center>
-											   <input type="submit" class="btn btn-success" value="I want to invest">
-										   </center>
-										</form>
-										</div>
-									  </div>
-								</div>
-								<div class="col-md-2">
-									
-								</div>
-								<div class="col-md-5">
-									<p>
-										<a class="btn btn-primary" data-toggle="collapse" href="#bitcoin" role="button" aria-expanded="false" aria-controls="collapseExample">
-										  Invest in Bitcoin
-										</a>
-									  </p>
-									  <div class="collapse" id="bitcoin">
-										<div class="card card-body">
-											<h3>MAKE A PLEDGE IN BITCOIN</h3>
-											<p> <b>Minimum amount: </b>
-												0.005฿</p>
-											<p>
-												<b>Maximum amount:</b>
-												 1฿	</p>
-											<p>
-												<b>Duration:</b> 7 days 
-											</p>
-											<p>
-											   <b>Interest Rate:</b> 50% 
-										   </p>
-										   <p>
-											   <b>Amount to Receive:</b> 0.00
-										   </p>
-									
-										 <form action="">
-											 <input type="text" class="form-control"><br>
-											<center>
-												<input type="submit" class="btn btn-success" value="I want to invest">
-											</center>
-										 </form>
-										</div>
-									  </div>
+							
+							
+								
 								</div>
 							</div>
 							
@@ -253,10 +200,7 @@
 									}
 				  
 									else {
-										
-										$('#success').modal('show');
-											$('#registration').modal('hide');
-							
+										alert('You have successfully lent your money. Your profit will start counting');
 									}
 								},
 								error: function (xhr, errmsg) {
@@ -266,21 +210,6 @@
 				  
 						});
 						  </script>
-
-
-
-	<div class="modal fade" id="success" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-body">
-				  <h3 class="modal-title">Your plan has been received. You will be matched within the next 24 hours.
-					    </h3>
-				</div>
-			  </div>
-			</div>
-		  </div>
-
-
 
 		<div class="clearfix"></div>
 		<footer>
