@@ -61,26 +61,29 @@
 		<!-- LEFT SIDEBAR -->
 
 
+<script type="text/javascript">
+$( document ).ready( function() {
+    $( '#teste' ).modal( 'toggle' );
+});
+</script>
 
-		<div class="modal fade" id="registration" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-body">
-				  <h3 class="modal-title">You are about to make an Investment of
-					   <span class="amount"></span> with interest of   <span class="interest"></span>
-					   to receive   <span class="total"></span> in 3 days. 
-					   Do you want to proceed with this? </h3>
+<!-- Modal -->
+<div class="modal fade in" id="teste" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+      <h2>Congratulations!!!!</h2> <br>
+      <h3>Your Plan has been received and you will be matched within the next 24 hours</h3>
+      </div>
+     
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-					  <center>
-						<form action="" id="submit_form">
-							{% csrf_token %}
-							<input type="submit" name="" id="" value="Proceed" class="btn btn-success">
-						</form>
-					  </center>
-				</div>
-			  </div>
-			</div>
-		  </div>
 		<div id="sidebar-nav" class="sidebar">
 			<div class="sidebar-scroll">
 				<nav>
@@ -209,79 +212,6 @@
 						</div>
 					</div>
 
-<script>
-	$(document).on('submit', '#registration_form', function(e){
-							e.preventDefault();
-							$('#registration').modal('show');
-							var amount = document.getElementById("amount").value;
-							var interest = amount/2;
-							var total =  parseInt(amount) + parseInt(interest)
-							$(".amount").text(amount);
-							$(".interest").text(interest);
-							$(".total").text(total);
-							
-});
-</script>
-		
-
-					<script>
-						$(document).on('submit', '#submit_form', function(e){
-							e.preventDefault();
-							var amount = document.getElementById("amount").value;
-							var interest = amount/2;
-							var total =  parseInt(amount) + parseInt(interest)
-							$.ajax({
-								type: 'POST',
-								url: '/profile/',
-								enctype: "multipart/form-data",
-								beforeSend: function () {
-									$('.modals').css('display', 'block')
-									$('#ajax_text').css('display', 'block');
-									$('#ajax_image').css('display', 'block');
-				  
-								},
-								  data: {
-									  
-				  
-											   amount :amount,
-											   interest :interest,
-											   total :total,
-											   csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-								},
-				  
-								success: function (data) {
-									if (data.lent) {
-										alert('you do not have any money to lend. Please pay in money')
-									}
-				  
-									else {
-										
-										$('#success').modal('show');
-											$('#registration').modal('hide');
-										
-							
-									}
-								},
-								error: function (xhr, errmsg) {
-									$('#error').html("<div class='alert-box alert radius' data-alert> Opps! We have encountered and error: </div>");
-								}
-							});
-				  
-						});
-						  </script>
-
-
-
-	<div class="modal fade" id="success" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-body">
-				  <h3 class="modal-title">Your plan has been received. You will be matched within the next 24 hours.
-					    </h3>
-				</div>
-			  </div>
-			</div>
-		  </div>
 
 
 

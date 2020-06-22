@@ -4,6 +4,7 @@ from django.conf.urls import url
 from app import views
 from django.contrib.auth import views as auth_views
 from app.forms import *
+from . import settings
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
@@ -15,6 +16,9 @@ urlpatterns = [
     url(r'^predashboard/$', views.predashaboard, name='predashboard'),
     url(r'^profile/$', views.ProfileView.as_view(), name="profile"),
     url(r'^plan/$', views.plan, name="plan"),
+    url(r'^not_assigned/$', views.not_assigned, name="not_assigned"),
+    url(r'^logout/$', auth_views.LogoutView,
+        {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='app/login.html',
                                                   authentication_form=LoginForm), name='login'),
 ]

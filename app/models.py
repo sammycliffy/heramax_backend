@@ -27,5 +27,8 @@ class Plan (models.Model):
 
 
 class Receiver (models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    person_to_pay = models.OneToOneField(User, on_delete=models.CASCADE)
     has_received = models.BooleanField(default=False)
+    amount = models.PositiveIntegerField(default=0)
+    the_receiver = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='Receiver', null=True)

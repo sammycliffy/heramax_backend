@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import request
+from django.http import *
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.models import User
@@ -51,44 +51,64 @@ def information(request):
     return render(request, 'app/information.html')
 
 
+def not_assigned(request):
+    return render(request, 'app/not_assigned.html')
+
+
 def predashaboard(request):
     return render(request, 'app/predashboard.html')
 
 
 def plan(request):
+    try:
+        user = User.objects.get(username=request.user.username)
+        to_pay = Receiver.objects.get(to_pay=user)
+        data = {
+            'details': to_pay
+        }
+    except User.DoesNotExist:
+        return HttpResonse('No user assigned yet')
     return render(request, 'app/plan.html')
 
 
 class ProfileView(View):
     template_name = 'app/profile.html'
+    has_been_assigned = 'app/plan.html'
+    not_assigned = 'app/not_assigned.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        # check if they have done a plan, if not redirect them to the profile page
+        try:
+            user = User.objects.get(username=request.user.username)
+            plan = Plan.objects.get(user=user)
+            try:
+                user = User.objects.get(username=request.user.username)
+                receiver = Receiver.objects.get(the_receiver=user)
+                data = {
+                    'details': receiver
+                }
+
+                return render(request, self.has_been_assigned, data)
+            except (Receiver.DoesNotExist, TypeError):
+                return render(request, self.not_assigned)
+        except Plan.DoesNotExist:
+            return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
         amount = request.POST.get('amount')
         interest = request.POST.get('interest')
         total = request.POST.get('total')
+        print(amount, interest, total)
         user = User.objects.get(username=request.user.username)
+        print(user.username)
         current_date = datetime.datetime.now()
-        try:
-            oldUser = Plan.objects.filter(is_new=False).update(
-                user=user,
-                amount=amount,
-                interest=interest,
-                total=total,
-                start_date=current_date,
-                end_date=current_date + timedelta(days=7),
-                duration=7
-            )
-        except Plan.DoesNotExist:
-            Plan.objects.create(
-                user=user,
-                amount=amount,
-                interest=interest,
-                total=total,
-                start_date=current_date,
-                end_date=current_date + timedelta(days=3),
-                duration=3
-            )
+        Plan.objects.create(
+            user=user,
+            amount=amount,
+            interest=interest,
+            total=total,
+            start_date=current_date,
+            end_date=current_date + timedelta(days=7),
+            duration=7
+        )
         return render(request, self.template_name,)

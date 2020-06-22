@@ -11,5 +11,11 @@ class PlanAdmin(admin.ModelAdmin):
                     'start_date', 'end_date', 'duration', 'is_approved', 'is_new', 'is_assigned']
 
 
+class ReceiverAdmin(admin.ModelAdmin):
+    list_display = ['person_to_pay', 'the_receiver', 'has_received', 'amount',
+                    ]
+
+
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Plan, PlanAdmin)
+admin.site.register(Receiver, ReceiverAdmin)
